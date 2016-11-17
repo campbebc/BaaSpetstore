@@ -1,0 +1,35 @@
+[
+    {
+        "firstName": "Benjamin",
+        "lastName": "Campbell",
+        "address": "2231 Crystal Drive",
+        "city": "Arlington",
+        "region": "VA",
+        "postalCode": "22202",
+        "email": "ben@example.com",
+        "username": "ben",
+        "password": "Password1"
+    },
+       {
+        "firstName": "Mark",
+        "lastName": "Ostrander",
+        "address": "2231 Crystal Drive",
+        "city": "Arlington",
+        "region": "VA",
+        "postalCode": "22202",
+        "email": "mark@example.com",
+        "username": "mark",
+        "password": "Password1"
+    },
+    {
+        "firstName": "Patrick",
+        "lastName": "Knowlan",
+        "address": "2231 Crystal Drive",
+        "city": "Arlington",
+        "region": "VA",
+        "postalCode": "22202",
+        "email": "patrick@example.com",
+        "username": "patrick",
+        "password": "Password1"
+    }
+]

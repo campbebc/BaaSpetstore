@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description>Endpoints for creating and deleting user accounts.</Description>
+    <FaultRules>
+        <FaultRule name="invalid_key_rule">
+            <Condition>(fault.name = "InvalidApiKey")</Condition>
+            <Step>
+                <FaultRules/>
+                <Name>ApiKeyFaultMessage</Name>
+            </Step>
+        </FaultRule>
+    </FaultRules>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <Name>Spike-Arrest</Name>
+            </Step>
+            <Step>
+                <Name>Quota</Name>
+            </Step>
+        </Request>
+    </PreFlow>
+    <Flows>
+        <Flow name="Get Users">
+            <Description>Get all user info.</Description>
+            <Request>
+                <Step>
+                    <Name>Validate-Admin-Token</Name>
+                </Step>
+            </Request>
+            <Condition>(proxy.pathsuffix MatchesPath "/") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="Get User By ID">
+            <Description>Get user info.</Description>
+            <Request>
+                <Step>
+                    <Name>Validate-Admin-Token</Name>
+                </Step>
+            </Request>
+            <Condition>(proxy.pathsuffix MatchesPath "/{user_id}") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="Create User">
+            <Description/>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>Verify-API-Key</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>Remove-API-Key</Name>
+                </Step>
+            </Request>
+            <Condition>(proxy.pathsuffix MatchesPath "/") and (request.verb = "POST")</Condition>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <HTTPProxyConnection>
+        <BasePath>/v1/streetcarts/users</BasePath>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="default">
+        <TargetEndpoint>default</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

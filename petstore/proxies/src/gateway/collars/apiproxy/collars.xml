@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="menus">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1454952968048</CreatedAt>
+    <CreatedBy>wwitman@apigee.com</CreatedBy>
+    <Description>menus</Description>
+    <DisplayName>menus</DisplayName>
+    <LastModifiedAt>1457653017379</LastModifiedAt>
+    <LastModifiedBy>steve.traut@apigee.com</LastModifiedBy>
+    <Policies>
+        <Policy>GetDataManagerKey</Policy>
+        <Policy>Quota</Policy>
+        <Policy>Remove-API-Key</Policy>
+        <Policy>RewriteTargetUrl</Policy>
+        <Policy>Spike-Arrest</Policy>
+        <Policy>Validate-Token-Manager-Access</Policy>
+        <Policy>Validate-Token-Owner-Access</Policy>
+        <Policy>Verify-API-Key</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://RewriteTargetUrl.js</Resource>
+    </Resources>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+    <validate>false</validate>
+</APIProxy>

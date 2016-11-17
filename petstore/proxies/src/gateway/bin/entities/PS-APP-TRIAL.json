@@ -1,0 +1,14 @@
+
+{
+ "name" : "PS-APP-TRIAL",
+ "apiProducts": [ "PS-PRODUCT-TRIAL"],
+ "keyExpiresIn" : "100000000000",
+ "scopes": [],   
+ "attributes" : [ 
+  {
+   "name" : "DisplayName",
+   "value" : "PS-APP-TRIAL"
+  } 
+ ],
+ "callbackUrl" : "http://petstore.com"
+}

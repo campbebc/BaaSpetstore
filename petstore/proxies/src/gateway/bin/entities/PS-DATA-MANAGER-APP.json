@@ -1,0 +1,13 @@
+{
+ "name" : "PS-DATA-MANAGER-APP",
+ "apiProducts": [ "PS-DATA-MANAGER-PRODUCT"],
+ "keyExpiresIn" : "100000000000",
+ "PSopes": [ ],   
+ "attributes" : [ 
+  {
+   "name" : "DisplayName",
+   "value" : "PS-DATA-MANAGER-APP"
+  } 
+ ],
+ "callbackUrl" : "http://petstore.com"
+}

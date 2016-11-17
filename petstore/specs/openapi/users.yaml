@@ -1,0 +1,129 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Users API
+basePath: /v1/petstore
+host: org_name-env.apigee.net
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  '/users':
+    get:
+      description: View all users.
+      operationId: Get Users
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/users'
+    post:
+      description: Create a user.
+      operationId: Create User
+      parameters:
+        - name: body
+          in: body
+          required: true
+          description: Updates for the menu item.
+          schema:
+            $ref: '#/definitions/userDetails'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/user'
+  '/users/{user_id}':
+    get:
+      description: View details for a user.
+      operationId: Get User By ID
+      parameters:
+        - name: user_id
+          in: path
+          description: ID of the user.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/user'
+definitions:
+  userDetails:
+    type: object
+    required:
+      - username
+      - password
+    properties:
+      firstName:
+        type: string
+        description: First name of user.
+      lastName:
+        type: string
+        description: Last name of user.
+      address:
+        type: string
+        description: Street address of user.
+      city:
+        type: string
+        description: City where user resides.
+      region:
+        type: string
+        description: Region or state where user resides.
+      postalCode:
+        type: string
+        description: Postal code where user resides.
+      email:
+        type: string
+        description: Email for contacting user.
+      username:
+        type: string
+        description: User name.
+      password:
+        type: string
+        description: Password.
+  users:
+    type: array
+    description: List of users.
+    items:
+      $ref: '#/definitions/userDetails'
+  user:
+    type: object
+    description: User details
+    properties:
+      uuid:
+        type: string
+        description: ID of the user.
+      username:
+        type: string
+        description: Username.
+      email:
+        type: string
+        description: Email for contacting user.
+      activated:
+        type: boolean
+        description: Flag that specifies whether the user is activated.
+      picture:
+        type: string
+        description: URL to user picture.
+      address:
+        type: string
+        description: Street address of user.
+      city:
+        type: string
+        description: City where user resides.
+      firstName:
+        type: string
+        description: First name of user.
+      lastName:
+        type: string
+        description: Last name of user.
+      postalCode:
+        type: string
+        description: Postal code where user resides.
+      region:
+        type: string
+        description: Region or state where user resides.

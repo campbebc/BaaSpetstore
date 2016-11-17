@@ -1,0 +1,39 @@
+{
+  "apiResources": [
+    "/PUT/v1/petstore/data-manager/**",
+    "/DELETE/v1/petstore/data-manager/**",
+    "/POST/v1/petstore/data-manager/**",
+    "/GET/v1/petstore/data-manager/**"
+  ],
+  "approvalType": "auto",
+  "attributes": [
+    {
+      "name": "access",
+      "value": "public"
+    }
+  ],
+  "approvalType": "auto",
+  "attributes": [
+    {
+      "name": "access",
+      "value": "public"
+    }
+  ],
+  "createdAt": 1447428938497,
+  "createdBy": "wwitman@apigee.com",
+  "description": "",
+  "displayName": "PS-DATA-MANAGER-PRODUCT",
+  "environments": [
+    "test",
+    "prod"
+  ],
+  "lastModifiedAt": 1447432484803,
+  "lastModifiedBy": "wwitman@apigee.com",
+  "name": "PS-DATA-MANAGER-PRODUCT",
+  "proxies": [
+    "data-manager-pet"
+  ],
+  "scopes": [
+    ""
+  ]
+}

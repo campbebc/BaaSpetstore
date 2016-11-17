@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="users">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1455040224822</CreatedAt>
+    <CreatedBy>wwitman@apigee.com</CreatedBy>
+    <Description>users API</Description>
+    <DisplayName>users</DisplayName>
+    <LastModifiedAt>1457652910408</LastModifiedAt>
+    <LastModifiedBy>steve.traut@apigee.com</LastModifiedBy>
+    <Policies>
+        <Policy>ApiKeyFaultMessage</Policy>
+        <Policy>GetDataManagerKey</Policy>
+        <Policy>Quota</Policy>
+        <Policy>Remove-API-Key</Policy>
+        <Policy>RewriteTargetUrl</Policy>
+        <Policy>Spike-Arrest</Policy>
+        <Policy>Validate-Admin-Token</Policy>
+        <Policy>Validate-Owner-Token</Policy>
+        <Policy>Verify-API-Key</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://RewriteTargetUrl.js</Resource>
+    </Resources>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+    <validate>false</validate>
+</APIProxy>

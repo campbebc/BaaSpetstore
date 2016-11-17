@@ -1,0 +1,203 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  description: Manage pets.
+  title: Pets API
+basePath: /v1/petstore
+host: org_name-env.apigee.net
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  '/pets':
+    get:
+      description: View all pets.
+      operationId: GetPets
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/pets'
+    post:
+      description: Create a pet.
+      operationId: CreatePet
+      parameters:
+        - name: body
+          in: body
+          required: true
+          description: Details for the pet.
+          schema:
+            $ref: '#/definitions/petDetails'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/pet'
+  '/pets/{pet_id}':
+    get:
+      description: View pet details.
+      operationId: GetPetbyID
+      parameters:
+        - name: pet_id
+          in: path
+          description: ID of the pet.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/pet'
+    put:
+      description: Update pet details.
+      operationId: UpdatePet
+      parameters:
+        - name: pet_id
+          in: path
+          required: true
+          description: ID of the pet.
+          type: string
+        - name: body
+          in: body
+          required: true
+          description: Details to update for the pet.
+          schema:
+            $ref: '#/definitions/petDetails'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/pet'
+    delete:
+      description: Delete a pet.
+      operationId: DeletePet
+      parameters:
+        - name: pet_id
+          in: path
+          description: ID of the pet.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/pet'
+  '/pets/{pet_id}/collars':
+    get:
+      description: View the collars associated with a pet.
+      operationId: GetPetMenus
+      parameters:
+        - name: pet_id
+          in: path
+          description: ID of the pet.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/collars'
+    post:
+      description: Add a collar to a pet.
+      operationId: CreatePetMenu
+      parameters:
+        - name: pet_id
+          in: path
+          description: ID of the pet.
+          required: true
+          type: string
+        - name: body
+          in: body
+          required: true
+          description: Name of the collar.
+          schema:
+            $ref: '#/definitions/collarName'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/collar'
+definitions:
+  pets:
+    type: array
+    description: List of pets.
+    items:
+      properties:
+        uuid:
+          type: string
+          description: ID of the pet.
+        petName:
+          type: string
+          description: Name of the pet.
+  pet:
+    type: object
+    description: Pet details.
+    properties:
+      uuid:
+        type: string
+        description: ID of the Pet.
+      petName:
+        type: string
+        description: Name of the Pet.
+      breed:
+        type: string
+        description: Breed of the Pet.
+      age:
+        type: string
+        description: Age of the Pet.
+      ownerID:
+        type: string
+        description: ID of the owner (user) of the Pet.
+  petDetails:
+    type: object
+    properties:
+      petName:
+        type: string
+        description: Name of the Pet.
+      breed:
+        type: string
+        description: Breed of the Pet.
+      age:
+        type: string
+        description: Age of the Pet.
+      ownerID:
+        type: string
+        description: ID of the owner (user) of the Pet.
+  collars:
+    type: array
+    description: List of collars.
+    items:
+      properties:
+        uuid:
+          type: string
+          description: ID of the collar.
+        cartID:
+          type: string
+          description: ID of the pet.
+        collarName:
+          type: string
+          description: Name of the collar.
+  collarName:
+    type: object
+    required:
+      - collarName
+    properties:
+      collarName:
+        type: string
+        description: Name of the collar.
+  collar:
+    type: object
+    properties:
+      uuid:
+        description: ID of the collar.
+        type: string
+      cartID:
+        description: ID of the pet.
+        type: string
+      collarName:
+        type: string
+        description: Name of the collar.

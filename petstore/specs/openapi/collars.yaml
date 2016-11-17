@@ -1,0 +1,82 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Collars API
+  description: Manage collars of your pet.
+basePath: /v1/petstore
+host: org_name-env.apigee.net
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  '/collars/{collar_id}':
+    get:
+      description: View details for a collar.
+      operationId: Get Collar by ID
+      parameters:
+        - name: collar_id
+          in: path
+          description: ID of the collar.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/collarDetails'
+    delete:
+      description: Delete a collar.
+      operationId: Delete Collar
+      parameters:
+        - name: collar_id
+          in: path
+          description: ID of the collar.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/collar'
+definitions:
+  collarDetails:
+    type: object
+    description: Collar details.
+    properties:
+      uuid:
+        description: ID of the collar.
+        type: string
+      petID:
+        description: ID of the pet.
+        type: string
+      collarName:
+        type: string
+        description: Name of the collar.
+      description:
+        type: string
+        description: Description of the collar.
+      color:
+        type: string
+        description: Color of the collar.
+  collar:
+    type: object
+    properties:
+      uuid:
+        type: string
+        description: ID of the collar
+      petId:
+        type: string
+        description: ID of the Pet
+      collarName:
+        type: string
+        description: Name of the collar.
+      description:
+        type: string
+        description: Description of the collar.
+      color:
+        type: string
+        description: Color of the collar.

@@ -1,0 +1,371 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Petstore API
+  description: Petstore API.
+basePath: /v1/petstore
+host: org_name-env.apigee.net
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /pets:
+    get:
+      description: View all pets.
+      operationId: Get pets
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/pets'
+    post:
+      description: Create a Pet.
+      operationId: Create pet
+      parameters:
+        - name: body
+          in: body
+          required: true
+          description: Details for the pet.
+          schema:
+            $ref: '#/definitions/petDetails'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/pet'
+  '/pets/{pet_id}':
+    get:
+      description: View pet details.
+      operationId: Get pet by ID
+      parameters:
+        - name: pet_id
+          in: path
+          description: ID of the pet.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/pet'
+    put:
+      description: Update pet details.
+      operationId: Update pet
+      parameters:
+        - name: pet_id
+          in: path
+          required: true
+          description: ID of the pet.
+          type: string
+        - name: body
+          in: body
+          required: true
+          description: Details to update for the pet.
+          schema:
+            $ref: '#/definitions/petDetails'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/pet'
+    delete:
+      description: Delete a pet.
+      operationId: Delete pet
+      parameters:
+        - name: pet_id
+          in: path
+          description: ID of the pet.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/pet'
+  '/pets/{pet_id}/collars':
+    get:
+      description: View the collars associated with a pet.
+      operationId: Get pet collars
+      parameters:
+        - name: pet_id
+          in: path
+          description: ID of the pet.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/collars'
+    post:
+      description: Add a collar to a Pet.
+      operationId: Create Pet collar
+      parameters:
+        - name: pet_id
+          in: path
+          description: ID of the Pet.
+          required: true
+          type: string
+        - name: body
+          in: body
+          required: true
+          description: Name of the collar.
+          schema:
+            $ref: '#/definitions/collarName'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/collar'
+  '/collars/{collar_id}':
+    get:
+      description: View details for a collar.
+      operationId: Get collar by ID
+      parameters:
+        - name: collar_id
+          in: path
+          description: ID of the collar.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/collarDetails'
+    delete:
+      description: Delete a collar.
+      operationId: Delete collar
+      parameters:
+        - name: collar_id
+          in: path
+          description: ID of the collar.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/collar'
+  /users:
+    get:
+      description: View all users.
+      operationId: Get Users
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/users'
+    post:
+      description: Create a user.
+      operationId: Create User
+      parameters:
+        - name: body
+          in: body
+          required: true
+          description: Updates for the collar item.
+          schema:
+            $ref: '#/definitions/userDetails'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/user'
+  '/users/{user_id}':
+    get:
+      description: View details for a user.
+      operationId: Get User By ID
+      parameters:
+        - name: user_id
+          in: path
+          description: ID of the user.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/user'
+definitions:
+  collars:
+    type: array
+    description: List of collars.
+    items:
+      properties:
+        uuid:
+          type: string
+          description: ID of the collar
+        petId:
+          type: string
+          description: ID of the Pet
+        collarName:
+          type: string
+          description: Name of the collar.
+  collarName:
+    type: object
+    required:
+      - collarName
+    properties:
+      collarName:
+        type: string
+        description: Name of the collar.
+  pets:
+    type: array
+    description: List of pets.
+    items:
+      properties:
+        uuid:
+          type: string
+          description: ID of the Pet.
+        petName:
+          type: string
+          description: Name of the Pet.
+  pet:
+    type: object
+    description: Pet details.
+    properties:
+      uuid:
+        type: string
+        description: ID of the Pet.
+      petName:
+        type: string
+        description: Name of the Pet.
+      breed:
+        type: string
+        description: Breed of the Pet.
+      age:
+        type: string
+        description: Age of the Pet.
+      ownerID:
+        type: string
+        description: ID of the owner (user) of the Pet.
+  petDetails:
+    type: object
+    properties:
+      petName:
+        type: string
+        description: Name of the Pet.
+      breed:
+        type: string
+        description: Breed of the Pet.
+      age:
+        type: string
+        description: Age of the Pet.
+      ownerID:
+        type: string
+        description: ID of the owner (user) of the Pet.
+  collarDetails:
+    type: object
+    description: collar details.
+    properties:
+        uuid:
+          type: string
+          description: ID of the collar
+        petId:
+          type: string
+          description: ID of the Pet
+        collarName:
+          type: string
+          description: Name of the collar.
+        description:
+          type: string
+          description: Description of the collar.
+        color:
+          type: string
+          description: Color of the collar.
+  collar:
+    type: object
+    properties:
+        uuid:
+          type: string
+          description: ID of the collar
+        petId:
+          type: string
+          description: ID of the Pet
+        collarName:
+          type: string
+          description: Name of the collar.
+        description:
+          type: string
+          description: Description of the collar.
+        color:
+          type: string
+          description: Color of the collar.
+  userDetails:
+    type: object
+    required:
+      - username
+      - password
+    properties:
+      firstName:
+        type: string
+        description: First name of user.
+      lastName:
+        type: string
+        description: Last name of user.
+      address:
+        type: string
+        description: Street address of user.
+      city:
+        type: string
+        description: City where user resides.
+      region:
+        type: string
+        description: Region or state where user resides.
+      postalCode:
+        type: string
+        description: Postal code where user resides.
+      email:
+        type: string
+        description: Email for contacting user.
+      username:
+        type: string
+        description: User name.
+      password:
+        type: string
+        description: Password.
+  users:
+    type: array
+    description: List of users.
+    items:
+      $ref: '#/definitions/userDetails'
+  user:
+    type: object
+    description: User details
+    properties:
+      uuid:
+        type: string
+        description: ID of the user.
+      username:
+        type: string
+        description: Username.
+      email:
+        type: string
+        description: Email for contacting user.
+      activated:
+        type: boolean
+        description: Flag that specifies whether the user is activated.
+      picture:
+        type: string
+        description: URL to user picture.
+      address:
+        type: string
+        description: Street address of user.
+      city:
+        type: string
+        description: City where user resides.
+      firstName:
+        type: string
+        description: First name of user.
+      lastName:
+        type: string
+        description: Last name of user.
+      postalCode:
+        type: string
+        description: Postal code where user resides.
+      region:
+        type: string
+        description: Region or state where user resides.

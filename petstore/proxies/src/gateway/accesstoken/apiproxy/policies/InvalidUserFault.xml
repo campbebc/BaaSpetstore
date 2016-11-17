@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="InvalidUserFault">
+    <DisplayName>InvalidUserFault</DisplayName>
+    <FaultResponse>
+        <Set>
+            <Headers/>
+            <Payload>{streetcarts.error.content}</Payload>
+            <StatusCode>{streetcarts.auth.status.code}</StatusCode>
+            <ReasonPhrase>{streetcarts.error.message}</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

@@ -1,0 +1,15 @@
+[{
+    "collarName": "Collar 1",
+    "description": "Comfortable collar",
+    "color": "Black"
+},
+{
+    "collarName": "Collar 2",
+    "description": "Cozy collar",
+    "color": "Red"
+},
+{
+    "collarName": "Collar 3",
+    "description": "Studded collar",
+    "color": "Silver"
+}]

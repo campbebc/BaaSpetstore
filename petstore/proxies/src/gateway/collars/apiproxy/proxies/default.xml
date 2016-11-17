@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description/>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <Name>Spike-Arrest</Name>
+            </Step>
+            <Step>
+                <Name>Quota</Name>
+            </Step>
+        </Request>
+    </PreFlow>
+    <Flows>
+        <Flow name="Get Menu By ID">
+            <Description>Get Menu</Description>
+            <Request>
+                <Step>
+                    <Name>Verify-API-Key</Name>
+                </Step>
+                <Step>
+                    <Name>Remove-API-Key</Name>
+                </Step>
+            </Request>
+            <Condition>(proxy.pathsuffix MatchesPath "/{menu_id}") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="Delete Menu">
+            <Description>Delete Menu</Description>
+            <Request>
+                <Step>
+                    <Name>Validate-Token-Owner-Access</Name>
+                </Step>
+            </Request>
+            <Condition>(proxy.pathsuffix MatchesPath "/{menu_id}") and (request.verb = "DELETE")</Condition>
+        </Flow>
+        <Flow name="Add Item to Menu">
+            <Description>Update Menu Item</Description>
+            <Request>
+                <Step>
+                    <Name>Validate-Token-Manager-Access</Name>
+                </Step>
+            </Request>
+            <Condition>(proxy.pathsuffix MatchesPath "/{menu_id}/items/{item_id}") and (request.verb = "PUT")</Condition>
+        </Flow>
+        <Flow name="Remove Item from Menu">
+            <Description>Remove Item from Menu</Description>
+            <Request>
+                <Step>
+                    <Name>Validate-Token-Manager-Access</Name>
+                </Step>
+            </Request>
+            <Condition>(proxy.pathsuffix MatchesPath "/*/items/*") and (request.verb = "DELETE")</Condition>
+        </Flow>
+        <Flow name="Get Items on Menu">
+            <Description>Get Items on a Menu</Description>
+            <Request>
+                <Step>
+                    <Name>Verify-API-Key</Name>
+                </Step>
+                <Step>
+                    <Name>Remove-API-Key</Name>
+                </Step>
+            </Request>
+            <Condition>(proxy.pathsuffix MatchesPath "/{menu_id}/items") and (request.verb = "GET")</Condition>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <HTTPProxyConnection>
+        <BasePath>/v1/streetcarts/menus</BasePath>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="default">
+        <TargetEndpoint>default</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

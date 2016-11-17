@@ -1,0 +1,13 @@
+{
+ "name" : "PS-APP-UNLIMITED",
+ "apiProducts": [ "PS-PRODUCT-UNLIMITED"],
+ "keyExpiresIn" : "100000000000",
+ "scopes": [],   
+ "attributes" : [ 
+  {
+   "name" : "DisplayName",
+   "value" : "PS-APP-UNLIMITED"
+  } 
+ ],
+ "callbackUrl" : "http://petstore.com"
+}
