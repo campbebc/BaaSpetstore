@@ -25,8 +25,8 @@ Petstore illustrates the following:
 
 Petstore integrates a set of Edge API proxies with an API BaaS data store. You might be interested in:
 
-* Descriptions of the [Petstore API proxies](https://github.com/campbebc/petstore/tree/master/petstore/proxies/src/gateway).
-* [OpenAPI documentation on the Petstore API](https://github.com/campbebc/petstore/tree/master/petstore/specs/openapi).
-* [An explanation of how Petstore accesses the data store](https://github.com/apigee/streetcarts/tree/master/streetcarts/proxies/src/gateway/data-manager).
-* Using a client to call its APIs. The repository includes collections and environments for the Postman tool. For more on using these, see [Petstore Postman client](https://github.com/apigee/streetcarts/tree/master/streetcarts/clients/postman).
+* Descriptions of the [Petstore API proxies](https://github.com/campbebc/BaaSpetstore/tree/master/petstore/proxies/src/gateway).
+* [OpenAPI documentation on the Petstore API](https://github.com/campbebc/BaaSpetstore/tree/master/petstore/specs/openapi).
+* [An explanation of how Petstore accesses the data store](https://github.com/campbebc/BaaSpetstore/tree/master/petstore/proxies/src/gateway/data-manager).
+* Using a client to call its APIs. The repository includes collections and environments for the Postman tool. For more on using these, see [Petstore Postman client](https://github.com/campbebc/BaaSpetstore/tree/master/petstore/clients/postman).
 
