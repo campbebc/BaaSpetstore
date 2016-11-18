@@ -2,7 +2,7 @@
 
 Petstore is made up of several proxies that integrate with a backend data store.
 
-> For information about deploying Petstore, see the [Deploying and Running Petstore](https://github.com/apigee/streetcarts/wiki/Deploying-and-Running) in the repository wiki.
+> For information about deploying Petstore, see the [Deploying and Running Petstore](https://github.com/campbebc/BaaSpetstore/wiki/Deploying-and-Running) in the repository wiki.
 
 | Proxy | Description | 
 | --- | --- |

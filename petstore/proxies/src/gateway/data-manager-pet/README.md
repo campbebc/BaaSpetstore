@@ -1,6 +1,6 @@
-# StreetCarts Data Manager
+# Petstore Data Manager
 
-The data manager is a Node.js JavaScript file that is an interface between StreetCarts API proxies in Edge (foodcarts, menus, items, users, and accesstoken) and an Apigee API BaaS data store. The data manager uses the API BaaS RESTful APIs to:
+The data manager is a Node.js JavaScript file that is an interface between Petstore API proxies in Edge (foodcarts, menus, items, users, and accesstoken) and an Apigee API BaaS data store. The data manager uses the API BaaS RESTful APIs to:
 
 - Perform CRUD operations on behalf of the proxies, including about user data.
 - Generate errors related to data store requests.
@@ -24,12 +24,12 @@ All GET requests are unauthenticated -- any user can request a list of foodcarts
 
 ### Handling requests for authenticated users
 
-Most PUT/POST/DELETE requests require an OAuth token corresponding to a user in the data store. API BaaS determines the user's access to the requested resource as set in BaaS permissions for the resource. The following describes the steps for authenticated requests. For more on how permissions are defined by StreetCarts, see "Permissions configuration".
+Most PUT/POST/DELETE requests require an OAuth token corresponding to a user in the data store. API BaaS determines the user's access to the requested resource as set in BaaS permissions for the resource. The following describes the steps for authenticated requests. For more on how permissions are defined by Petstore, see "Permissions configuration".
 
-1. In the StreetCarts authentication logic, a user sends a username and password to the accesstoken proxy. Edge passes these to the data-manager.js module, which uses them to authenticate the user with API BaaS, receiving a token.
+1. In the Petstore authentication logic, a user sends a username and password to the accesstoken proxy. Edge passes these to the data-manager.js module, which uses them to authenticate the user with API BaaS, receiving a token.
 2. After a successful authentication, data-manager.js passes information about the user, including the BaaS-generated token, back to the Edge proxy.
 3. The accesstoken proxy copies the API BaaS token into the Edge-generated OAuth token for use later, then the Edge token is passed back to the client.
-3. For subsequent PUT/POST/DELETE requests, the client passes the user's Edge token back to a StreetCarts proxy.
+3. For subsequent PUT/POST/DELETE requests, the client passes the user's Edge token back to a Petstore proxy.
 4. When handling the request, the data-manager proxy's server.js file extracts the API BaaS token from the Edge token, then passes the BaaS token with its request to data-manager.js.
 5. data-manager.js appends its request with the token. API BaaS responds to the request based on permissions set for each verb/resource pair (such as POST /foodcarts).
 6. If the user has access to the resource, API BaaS proceeds with the request; if not, BaaS generally responds with a 401 error.
@@ -39,19 +39,17 @@ Most PUT/POST/DELETE requests require an OAuth token corresponding to a user in 
 
 Resource-level authorization for each request is handled by API BaaS through permissions set there. To set up these permissions, code in the data-manager proxy's data-manager.js file creates the following: 
 
-For each foodcart created, the data manager creates:
+For each pet created, the data manager creates:
 
-- a user group. This is a group for cart owners who will have permission to update the cart's profile and delete the cart, as well as to create, update, and delete menus and menu items.
-- roles associated with each cart. For example, a role to contain permissions to update and delete the cart, a role with permissions to create menus and menu items, and so on.
-- permissions needed to update and delete the new cart, and to create its menus and food items.
+- a user group. This is a group for pet owners who will have permission to update the pet's profile and delete the pet, as well as to create, update, and delete collar items.
+- roles associated with each pet. For example, a role to contain permissions to update and delete the pet, a role with permissions to create collar items, and so on.
+- permissions needed to update and delete the new pet, and to create its collar items.
 
-For each menu created, the data manager creates:
+For each collar created, the data manager creates:
 
-- permissions needed to update and delete the menu. These are defined in the cart's menu-manager role.
+- permissions needed to update and delete the collar. These are defined in the pet's collar-manager role.
 
-For each menu items created, the data manager creates:
 
-- permissions needed to update and delete the item. These are defined in the cart's menu-manager role.
 
 
 
