@@ -6,7 +6,7 @@
 echo -e "\n***** Pull from GitHub"
 sc_bin=$(pwd)
 cd ../../../../../
-git pull https://github.com/apigee/streetcarts
+git pull https://github.com/campbebc/BaaSpetstore
 cd $sc_bin
 cd ..
 

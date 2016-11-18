@@ -1,24 +1,22 @@
-# StreetCarts API Proxies
+# Petstore API Proxies
 
-StreetCarts is made up of several proxies that integrate with a backend data store.
+Petstore is made up of several proxies that integrate with a backend data store.
 
-> For information about deploying StreetCarts, see the [Deploying and Running StreetCarts](https://github.com/apigee/streetcarts/wiki/Deploying-and-Running) in the repository wiki.
+> For information about deploying Petstore, see the [Deploying and Running Petstore](https://github.com/apigee/streetcarts/wiki/Deploying-and-Running) in the repository wiki.
 
 | Proxy | Description | 
 | --- | --- |
 | accesstoken | Receives requests to authenticate users |
 | data-manager | Not client-facing. Between client-facing proxies and data store to translate requests from clients into requests to the backend data store. |
-| foodcarts | Receives requests to GET/POST/PUT/DELETE requests about food carts. Also receives requests to POST requests about menu items and menus. |
-| items | Receives requests to GET/PUT/DELETE menu items. |
-| menus | Receives requests to GET/PUT/DELETE menus. |
-| reviews | Not yet full implemented. |
+| pets | Receives requests to GET/POST/PUT/DELETE requests about pets. Also receives requests to POST requests about collars. |
+| collars | Receives requests to GET/PUT/DELETE collars. |
 | users | Receives requests to GET/POST/PUT/DELETE requests about users. |
 
 ## Proxy features 
 
 ### Authentication and authorization
 
-StreetCarts uses OAuthV2 for authentication. Authorization logic is shared between scopes defined in Edge and role-based permissions defined in API BaaS.
+Petstore uses OAuthV2 for authentication. Authorization logic is shared between scopes defined in Edge and role-based permissions defined in API BaaS.
 
 1. Users request authenticate via the accesstoken proxy.
 2. Their credentials are passed to API BaaS for authentication.
