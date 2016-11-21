@@ -1,6 +1,6 @@
-# StreetCarts Postman client
+# Petstore Postman client
 
-This directory contains collection and environment files to make it easier to set up a client to StreetCarts. 
+This directory contains collection and environment files to make it easier to set up a client to Petstore. 
 
 You can think of the files here as representing two kinds of Postman clients -- one for sequentially testing calls in the collection list, and the other for testing calls independently
 
