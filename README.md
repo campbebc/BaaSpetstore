@@ -4,7 +4,7 @@ Petstore is a full API application that integrates Apigee Edge with API BaaS to 
 
 ## Getting started
 
-Learn how to install, set up, and use Petstore, on the [doc wiki](https://github.com/campbebc/BaaSpetstore/blob/master/wiki.wiki/Home.md).
+Learn how to install, set up, and use Petstore, on the [doc wiki](https://github.com/campbebc/BaaSpetstore/wiki).
 
 ## About Petstore
 
